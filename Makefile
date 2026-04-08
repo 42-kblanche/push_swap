@@ -20,7 +20,12 @@ LIBFTDIR = src/libft
 INCFT = $(INCLUDES)/$(LIBFT)
 SRCFT = $(LIBFTDIR)/$(LIBFT)
 
-SRCS = $(MAIN)
+SRCS = \
+	$(MAIN) \
+	ps_checks.c \
+	ps_stack_a.c \
+	ps_stack_b.c \
+	ps_stack_both.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
