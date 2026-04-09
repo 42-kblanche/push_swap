@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   stack_a.c                                          :+:      :+:    :+:   */
+/*   ps_stack_a.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 20:17:52 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/08 20:45:32 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/09 15:27:16 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,10 @@ void	ps_rrotate_a(t_ilist **stack_a)
 {
 	ft_ilist_rrotate(stack_a);
 	ft_printf("rra\n");
+}
+
+void	ps_push_rotate_a(t_ilist **stack_a, t_ilist **stack_b)
+{
+	ps_push_a(stack_a, stack_b);
+	ps_rotate_a(stack_a);
 }

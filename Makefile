@@ -23,9 +23,11 @@ SRCFT = $(LIBFTDIR)/$(LIBFT)
 SRCS = \
 	$(MAIN) \
 	ps_checks.c \
+	ps_sort.c \
 	ps_stack_a.c \
 	ps_stack_b.c \
-	ps_stack_both.c
+	ps_stack_both.c \
+	ps_utils.c
 OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)

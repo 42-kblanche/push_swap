@@ -6,11 +6,21 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 20:47:07 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/08 21:25:17 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/09 19:55:09 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+int	ps_is_rotate_sorted(t_ilist **stack_a)
+{
+	int	ret;
+	t_ilist	*min;
+
+	min = ps_find_min(stack_a);
+	ret = ps_is_sorted(&min);
+	return (ret);
+}
 
 int	ps_is_sorted(t_ilist **stack_a)
 {
