@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:37:29 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/09 17:46:58 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/11 18:15:54 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void	ft_ilist_push_front(t_ilist **self, t_ilist *new_node)
 	{
 		if (*self)
 			ilist_attach_front(*self, new_node);
+		else
+		{
+			new_node->next = new_node;
+			new_node->prev = new_node;
+		}
 		*self = new_node;
 	}
 }

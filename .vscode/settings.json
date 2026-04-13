@@ -8,5 +8,6 @@
         "**/Thumbs.db": true,
         "**/*.o": true,
 		"push_swap": true,
+		"checker_linux": true,
     }
 }

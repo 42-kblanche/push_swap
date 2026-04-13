@@ -1,43 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ilist_new.c                                     :+:      :+:    :+:   */
+/*   ft_ilist_radix_index.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 21:44:21 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/11 17:52:59 by kblanche         ###   ########.fr       */
+/*   Created: 2026/04/11 17:14:21 by kblanche          #+#    #+#             */
+/*   Updated: 2026/04/11 18:08:12 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../listft.h"
 #include <stddef.h>
-#include <stdlib.h>
 
-t_ilist	*ft_ilist_new(void)
+void	ft_ilist_radix_index(t_ilist *self)
 {
-	t_ilist	*ret;
+	size_t	size;
+	t_ilist	*temp;
+	t_ilist	*biggest;
 
-	ret = malloc(sizeof(t_ilist));
-	if (!ret)
-		return (NULL);
-	ret->val = 0;
-	ret->radix_index = 0;
-	ret->next = ret;
-	ret->prev = ret;
-	return (ret);
-}
-
-t_ilist	*ft_ilist_val_new(int val)
-{
-	t_ilist	*ret;
-
-	ret = malloc(sizeof(t_ilist));
-	if (!ret)
-		return (NULL);
-	ret->val = val;
-	ret->radix_index = 0;
-	ret->next = ret;
-	ret->prev = ret;
-	return (ret);
+	size = ft_ilist_get_size(self);
+	while (size > 0)
+	{
+		temp = self;
+		biggest = self;
+		if (temp->radix_index)
+			biggest = NULL;
+		while (temp->next && temp->next != self)
+		{
+			temp = temp->next;
+			if (!temp->radix_index && (!biggest || temp->val > biggest->val))
+				biggest = temp;
+		}
+		if (biggest)
+			biggest->radix_index = size;
+		--size;
+	}
 }

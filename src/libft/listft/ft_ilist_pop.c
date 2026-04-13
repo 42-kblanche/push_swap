@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/08 17:56:16 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/08 19:19:30 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/11 17:35:40 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ t_ilist	*ft_ilist_pop(t_ilist **self)
 	if ((*self)->next == *self)
 	{
 		ret = ft_ilist_val_new((*self)->val);
+		ret->radix_index = (*self)->radix_index;
 		ft_ilist_delete(self);
 		return (ret);
 	}

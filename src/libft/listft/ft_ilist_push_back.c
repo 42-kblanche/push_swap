@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:37:29 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/09 17:47:34 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/11 18:17:57 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,13 @@ static void	ilist_attach_back(t_ilist *self, t_ilist *new_node)
 {
 	if (!new_node)
 		return ;
+	if (!self)
+	{
+		new_node->next = new_node;
+		new_node->prev = new_node;
+		self = new_node;
+		return ;
+	}
 	new_node->next = self->next;
 	new_node->prev = self;
 	self->next = new_node;

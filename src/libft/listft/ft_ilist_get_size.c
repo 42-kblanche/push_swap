@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ilist_new.c                                     :+:      :+:    :+:   */
+/*   ft_ilist_get_size.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/01 21:44:21 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/11 17:52:59 by kblanche         ###   ########.fr       */
+/*   Created: 2026/04/11 17:17:22 by kblanche          #+#    #+#             */
+/*   Updated: 2026/04/13 15:56:50 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../listft.h"
-#include <stddef.h>
-#include <stdlib.h>
 
-t_ilist	*ft_ilist_new(void)
+int	ft_ilist_get_size(t_ilist *self)
 {
-	t_ilist	*ret;
+	int		ret;
+	t_ilist	*temp;
 
-	ret = malloc(sizeof(t_ilist));
-	if (!ret)
-		return (NULL);
-	ret->val = 0;
-	ret->radix_index = 0;
-	ret->next = ret;
-	ret->prev = ret;
-	return (ret);
-}
-
-t_ilist	*ft_ilist_val_new(int val)
-{
-	t_ilist	*ret;
-
-	ret = malloc(sizeof(t_ilist));
-	if (!ret)
-		return (NULL);
-	ret->val = val;
-	ret->radix_index = 0;
-	ret->next = ret;
-	ret->prev = ret;
+	if (!self)
+		return (0);
+	ret = 1;
+	temp = self;
+	while (temp->next && temp->next != self)
+	{
+		++ret;
+		temp = temp->next;
+	}
 	return (ret);
 }

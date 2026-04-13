@@ -67,10 +67,12 @@ ifneq ($(wildcard listft/),)
 SRCS += \
 	listft/ft_ilist_delete.c \
 	listft/ft_ilist_display.c \
+	listft/ft_ilist_get_size.c \
 	listft/ft_ilist_new.c \
 	listft/ft_ilist_pop.c \
 	listft/ft_ilist_push_back.c \
 	listft/ft_ilist_push_front.c \
+	listft/ft_ilist_radix_index.c \
 	listft/ft_ilist_rotate.c \
 	listft/ft_ilist_swap.c
 endif

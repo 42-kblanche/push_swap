@@ -54,3 +54,4 @@ dkms.conf
 # debug information files
 *.dwo
 push_swap
+checker_linux

@@ -6,11 +6,12 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/03/28 20:49:38 by kblanche          #+#    #+#             */
-/*   Updated: 2026/03/28 20:54:28 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/13 15:12:44 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <limits.h>
 
 int	ft_atoi(const char *str)
 {
