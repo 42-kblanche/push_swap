@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:03:28 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/13 16:10:46 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/13 17:31:48 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ static int	parse_args(int argc, char **argv, t_ilist **stack_a)
 {
 	int	temp;
 
-	if (argc < 1)
+	if (argc <= 1)
 		return (1);
 	if (!is_arg_valid(argv[--argc]))
 	{
 		ft_errorf("Error\n");
 		return (1);
 	}
-	if (argc < 1)
+	if (argc <= 1)
 		return (1);
 	*stack_a = ft_ilist_val_new(ft_atoi(argv[argc]));
 	while (argc > 1)
