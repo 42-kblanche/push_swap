@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:03:28 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/14 23:16:53 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/14 23:52:46 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,6 +117,8 @@ int	main(int argc, char **argv)
 	t_ilist	*stack_b;
 	char	**args;
 
+	if (argc <= 1)
+		return (1);
 	stack_a = NULL;
 	stack_b = NULL;
 	args = sanitize_args(argc, argv);
