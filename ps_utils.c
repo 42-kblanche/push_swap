@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/04/09 18:50:40 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/13 15:56:31 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/14 22:57:12 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,15 +56,4 @@ void	ps_smart_rotate_a(t_ilist **stack_a, int dist)
 		ps_rrotate_a(stack_a);
 	else
 		ps_rotate_a(stack_a);
-}
-
-void	ps_smart_rotate_b(t_ilist **stack_b, int dist)
-{
-	int	size;
-
-	size = ft_ilist_get_size(*stack_b);
-	if (dist > size / 2)
-		ps_rrotate_b(stack_b);
-	else
-		ps_rotate_b(stack_b);
 }

@@ -17,6 +17,7 @@ SRCS = \
 	ft_isdigit.c \
 	ft_itoa.c \
 	ft_itoh.c \
+	ft_join.c \
 	ft_memcpy.c \
 	ft_ptoh.c \
 	ft_putstr_fd.c \
@@ -28,7 +29,8 @@ SRCS = \
 	ft_strncmp.c \
 	ft_substr.c \
 	ft_tolower.c \
-	ft_toupper.c
+	ft_toupper.c \
+	ft_trim.c
 ifneq ($(wildcard buffft/),)
 SRCS += \
 	buffft/ft_buff_append.c \

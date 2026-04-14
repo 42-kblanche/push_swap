@@ -6,7 +6,7 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/11 22:51:06 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/07 17:32:47 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/14 22:33:26 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,20 @@ static size_t	word_len(const char *s, char c)
 	return (r);
 }
 
-static void	free_tab(char **t, size_t size)
+void	ft_free_tab(char **t)
+{
+	size_t	i;
+
+	i = 0;
+	while (t[i])
+	{
+		free(t[i]);
+		++i;
+	}
+	free(t);
+}
+
+void	ft_free_tab_size(char **t, size_t size)
 {
 	size_t	i;
 
@@ -41,7 +54,7 @@ static int	substr_check(const char *s, char c, char **r, size_t k)
 	r[k] = ft_substr(s, 0, word_len(s, c));
 	if (!r[k])
 	{
-		free_tab(r, ft_count_words(s, c));
+		ft_free_tab_size(r, ft_count_words(s, c));
 		return (0);
 	}
 	return (1);

@@ -6,13 +6,14 @@
 /*   By: kblanche <kblanche@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/01 23:03:28 by kblanche          #+#    #+#             */
-/*   Updated: 2026/04/13 17:31:48 by kblanche         ###   ########.fr       */
+/*   Updated: 2026/04/14 23:16:53 by kblanche         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 #include "src/libft/libft.h"
 #include "src/libft/printfft.h"
+#include <stdlib.h>
 #include <limits.h>
 
 static int	is_arg_valid(char *arg)
@@ -23,6 +24,8 @@ static int	is_arg_valid(char *arg)
 
 	sign_flag = 0;
 	i = 0;
+	if (arg[i] == '\0')
+		return (0);
 	while (arg[i])
 	{
 		if (ft_isdigit(arg[i]))
@@ -40,30 +43,51 @@ static int	is_arg_valid(char *arg)
 	return (1);
 }
 
-static int	parse_args(int argc, char **argv, t_ilist **stack_a)
+static char	**sanitize_args(int argc, char **argv)
+{
+	char	**args;
+	char	*concatenated_args;
+	int		i;
+
+	i = 1;
+	while (i < argc)
+	{
+		ft_trim(argv[i], ' ');
+		++i;
+	}
+	concatenated_args = ft_join(argv + 1, argc - 1, ' ');
+	if (!concatenated_args)
+		return (NULL);
+	args = ft_split(concatenated_args, ' ');
+	free(concatenated_args);
+	return (args);
+}
+
+static int	parse_args(char **args, t_ilist **stack_a)
 {
 	int	temp;
+	size_t	i;
 
-	if (argc <= 1)
-		return (1);
-	if (!is_arg_valid(argv[--argc]))
+	i = 0;
+	while (args && args[i])
+	{
+		if (*(args[i]))
+		{
+			temp = ft_atoi(args[i]);
+			if (!is_arg_valid(args[i]) || ps_is_duplicate(stack_a, temp))
+			{
+				ft_ilist_delete(stack_a);
+				ft_errorf("Error\n");
+				return (1);
+			}
+			ft_ilist_push_back_val(stack_a, temp);
+		}
+		++i;
+	}
+	if (!(*stack_a))
 	{
 		ft_errorf("Error\n");
 		return (1);
-	}
-	if (argc <= 1)
-		return (1);
-	*stack_a = ft_ilist_val_new(ft_atoi(argv[argc]));
-	while (argc > 1)
-	{
-		temp = ft_atoi(argv[--argc]);
-		if (!is_arg_valid(argv[argc]) || ps_is_duplicate(stack_a, temp))
-		{
-			ft_ilist_delete(stack_a);
-			ft_errorf("Error\n");
-			return (1);
-		}
-		ft_ilist_push_front_val(stack_a, temp);
 	}
 	return (0);
 }
@@ -91,10 +115,13 @@ int	main(int argc, char **argv)
 	int		err_ret;
 	t_ilist	*stack_a;
 	t_ilist	*stack_b;
+	char	**args;
 
 	stack_a = NULL;
 	stack_b = NULL;
-	err_ret = parse_args(argc, argv, &stack_a);
+	args = sanitize_args(argc, argv);
+	err_ret = parse_args(args, &stack_a);
+	ft_free_tab(args);
 	if (!err_ret)
 		err_ret = sort(&stack_a, &stack_b);
 	ft_ilist_delete(&stack_a);
